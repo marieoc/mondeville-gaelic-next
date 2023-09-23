@@ -1,0 +1,152 @@
+@use 'colors';
+
+/* -------*/
+/* FOR SIMPLE BORDRED BUTTONS */
+/* -------*/
+@mixin simple-border-button {
+    .simple-border {
+        text-transform: uppercase;
+        font-family: 'Russo One';
+        letter-spacing: .3rem;
+        border : 2px solid #fff;
+        padding: 1rem 2rem;
+    }
+}
+
+/* -------*/
+/* LAYOUT FOR DOUBLE BORDERED TITLES AND BUTTON */
+/* -------*/
+@mixin double-border {
+    .double-border {
+        text-transform: uppercase;
+        font-family: 'Russo One';
+        letter-spacing: .3rem;
+        position: relative;
+    }
+
+    .double-border::before, .double-border::after {
+        content: "";
+        position: absolute;
+        border : 2px solid #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .double-border::before {
+        transform: translate(5px, 5px);
+    }
+    
+    .double-border::after {
+        transform: translate(-5px, -5px);
+    }
+}
+
+/* FOR CONTACT BUTTON */
+@mixin border-button-effect {
+    .border-button-effect {
+        padding: 1rem 2rem;
+        position: relative;
+        border: 2px solid transparent;
+        color: colors.$gold;
+    
+        &:hover {
+            border: 2px solid transparent;
+        }
+
+    }
+
+    .border-button-effect::before, .border-button-effect::after {
+        content: "";
+        position: absolute;
+        border : 2px solid #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: .5s all;
+        border-color: colors.$gold;
+    }
+
+    .border-button-effect:hover::before {
+        transform: translate(3px, 3px);
+    }
+
+    .border-button-effect:hover::after {
+        transform: translate(-3px, -3px);
+    }
+}
+
+
+/* -------*/
+/* LAYOUT FOR DOUBLE BORDERED CARDS ON HOMEPAGE */
+/* -------*/
+@mixin card-effect {
+    .double-border-card-effect {
+        background-color: #fff;
+        border: 3px solid #fff;
+        position: relative;
+        transition: .5s all;
+
+        &:hover {
+            transform: translate(-10px, -10px);
+        }
+    }
+
+    .double-border-card-effect::before,
+    .double-border-card-effect::after {
+        content:"";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        transition: .5s all;
+    }
+
+    .double-border-card-effect::after {
+        z-index: -1;
+        border: 3px solid #fff;
+    }
+    
+    .double-border-card-effect:hover::after {
+        transform: translate(15px, 15px);
+    }
+    
+    .double-border-card-effect:hover::before {
+        background-color: rgba(0,0,0,.8);
+    }
+
+}
+
+/* LINEAR GRADIENT FOR SMOOTHING SECTIONS */
+@mixin linear-gradient-black-top {
+    .linear-gradient-black-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        height: 120px;
+        background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    }
+}
+
+@mixin linear-gradient-black-bottom {
+    .linear-gradient-black-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        height: 120px;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        
+    }
+}
+
+@mixin linear-gradient-black {
+    @include linear-gradient-black-top();
+    @include linear-gradient-black-bottom();
+}
