@@ -23,7 +23,7 @@ const Home = () => {
         <h2 className="double-border">Actualités</h2>
 
         <div className="news_card__wrapper flex flex-wrap flex-center">
-          <a className="news_card double-border-card-effect">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/affiche_entrainement.jpeg"
               alt="News Article"
@@ -33,9 +33,9 @@ const Home = () => {
             <div className="next_btn__wrapper flex flex-center">
               <a href="" className="next_btn simple-border">Lire la suite</a>
             </div>
-          </a>
+          </div>
 
-          <a className="news_card double-border-card-effect">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/affiche_entrainement2.jpeg"
               alt="News Article"
@@ -45,9 +45,9 @@ const Home = () => {
             <div className="next_btn__wrapper flex flex-center">
               <a href="" className="next_btn simple-border">Lire la suite</a>
             </div>
-          </a>
+          </div>
 
-          <a className="news_card double-border-card-effect">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/bg2.jpeg"
               alt="News Article"
@@ -57,7 +57,7 @@ const Home = () => {
             <div className="next_btn__wrapper flex flex-center">
               <a href="" className="next_btn simple-border">Lire la suite</a>
             </div>
-          </a>
+          </div>
         </div>
       </section>
 

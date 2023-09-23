@@ -100,8 +100,9 @@ header {
     width: 100vw;
     position: absolute; /* or fixed ? */
     z-index: 5;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Russo One';
+    letter-spacing: .1rem;
     text-transform: uppercase;
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,.8) 50%, rgba(0,0,0,0) 100%);
 
@@ -169,8 +170,8 @@ header {
     height: 30px;
     position: absolute;
     z-index: 6;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     border: none;
 }
 
@@ -220,15 +221,18 @@ header {
     transform: translateY(0) rotateZ(-45deg);
 }
 
+.burger.active {
+    position: fixed;
+}
+
+
 /* DESKTOP NAVBAR */
 .desktop_navbar {
     display: none;
-    letter-spacing: .1rem;
 
     @media (min-width: breakpoints.$desktop) {
         display: flex;
     }
-
 
     ul {
         margin: 0 .5rem;

@@ -31,7 +31,7 @@ const Nav = () => {
           <span></span>
         </button>
 
-        <nav className={`mobile_navbar w-full flex flex-col space-around ${isMobileMenuOpen ? "active" : ""}`}>
+        <nav className={`mobile_navbar w-full flex flex-col flex-center ${isMobileMenuOpen ? "active" : ""}`}>
 
           <ul className="w-full flex flex-col flex-center">
             <li>
