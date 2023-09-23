@@ -41,7 +41,7 @@ const Nav = () => {
         </ul>
 
         <div className="contact_btn_wrapper">
-          <Link className="border-button-effect" href="">Contact</Link>
+          <Link className="border-button-effect" href="/contact">Contact</Link>
         </div>
 
       </nav>

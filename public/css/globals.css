@@ -594,4 +594,177 @@ h2 {
   filter: saturate(100%);
 }
 
+/* CONTACT PAGE */
+.contact-page__wrapper {
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+.contact-page__wrapper .position-relative {
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 780px) {
+  .contact-page__wrapper {
+    padding-top: 1rem;
+  }
+}
+.contact-page__wrapper .bg-image {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/img/bg-contact2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contact-page__wrapper .linear-gradient-black-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 120px;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+}
+.contact-page__wrapper .linear-gradient-black-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+}
+.contact-page__wrapper .linear-gradient-black-bottom {
+  height: 500px;
+}
+.contact-page__wrapper h1 {
+  letter-spacing: 0.2rem;
+  padding-top: 150px;
+  font-family: "Russo One";
+  color: #F2B235;
+  text-transform: uppercase;
+  font-size: 2.4rem;
+}
+@media (min-width: 780px) {
+  .contact-page__wrapper h1 {
+    font-size: 3rem;
+  }
+}
+.contact-page__wrapper .contact-msg {
+  max-width: 700px;
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+}
+@media (min-width: 780px) {
+  .contact-page__wrapper .contact-msg {
+    font-size: 1.4rem;
+  }
+}
+.contact-page__wrapper .contact-form {
+  width: 100%;
+  max-width: 700px;
+  padding: 1rem;
+  margin-bottom: 4rem;
+}
+.contact-page__wrapper .contact-form label,
+.contact-page__wrapper .contact-form input,
+.contact-page__wrapper .contact-form textarea {
+  width: 100%;
+  font-family: "Montserrat";
+  font-size: 1.4rem;
+}
+.contact-page__wrapper .contact-form label {
+  margin: 1.5rem 0;
+}
+.contact-page__wrapper .contact-form textarea, .contact-page__wrapper .contact-form input {
+  padding: 1rem;
+}
+.contact-page__wrapper .contact-form textarea {
+  min-height: 300px;
+  resize: vertical;
+}
+@media (min-width: 780px) {
+  .contact-page__wrapper .contact-form .name-input__wrapper {
+    justify-content: space-between;
+  }
+  .contact-page__wrapper .contact-form .name-input {
+    width: 48%;
+  }
+}
+.contact-page__wrapper .contact-form .contact-form-btn__wrapper {
+  padding: 1rem;
+}
+.contact-page__wrapper .contact-form .border-button-effect {
+  padding: 1rem 2rem;
+  position: relative;
+  border: 2px solid transparent;
+  color: #F2B235;
+}
+.contact-page__wrapper .contact-form .border-button-effect:hover {
+  border: 2px solid transparent;
+}
+.contact-page__wrapper .contact-form .border-button-effect::before, .contact-page__wrapper .contact-form .border-button-effect::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s all;
+  border-color: #F2B235;
+}
+.contact-page__wrapper .contact-form .border-button-effect:hover::before {
+  transform: translate(3px, 3px);
+}
+.contact-page__wrapper .contact-form .border-button-effect:hover::after {
+  transform: translate(-3px, -3px);
+}
+.contact-page__wrapper .contact-form .contact-submit-btn {
+  padding: 1.5rem 2rem;
+  font-family: "Russo One";
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  background-color: transparent;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.contact-page__wrapper .more-details-msg {
+  font-family: "Russo One";
+  text-transform: uppercase;
+  text-align: center;
+  padding: 3rem;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.contact-page__wrapper .more-details__content {
+  max-width: 700px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #fff;
+}
+.contact-page__wrapper .more-details__content .fa-solid {
+  font-size: 3rem;
+}
+.contact-page__wrapper .more-details__content .bold {
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+  padding: 1rem 0;
+  font-family: "Russo One";
+  text-transform: uppercase;
+}
+.contact-page__wrapper .email-details__wrapper,
+.contact-page__wrapper .phone-details__wrapper {
+  margin: 1rem 0;
+}
+
 /*# sourceMappingURL=globals.css.map */

@@ -466,3 +466,158 @@ h2 {
         }
     }
 }
+
+
+/* CONTACT PAGE */
+.contact-page__wrapper {
+    width: 100vw;
+    background: rgba(0,0,0,0.7);
+    position: relative;
+
+    .position-relative {
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: breakpoints.$large_tablet) {
+        padding-top: 1rem;
+    }
+    
+    .bg-image {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/img/bg-contact2.jpeg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    @include mixins.linear-gradient-black();
+    .linear-gradient-black-bottom {
+        height: 500px;
+    }
+
+    h1 {
+        letter-spacing: .2rem;
+        padding-top: 150px;
+        font-family: 'Russo One';
+        color: colors.$gold;
+        text-transform: uppercase;
+        font-size: 2.4rem;
+
+        @media (min-width: breakpoints.$large_tablet) {
+            font-size: 3rem;
+        }
+    }
+
+    .contact-msg {
+        max-width: 700px;
+        font-family: 'Montserrat';
+        font-size: 1.2rem;
+        margin: 1rem;
+        padding: 1rem;
+        text-align: center;
+        color: #fff;
+
+        @media (min-width: breakpoints.$large_tablet) {
+            font-size: 1.4rem;
+        }
+    }
+
+
+    .contact-form {
+        width: 100%;
+        max-width: 700px;
+        padding: 1rem;
+        margin-bottom: 4rem;
+        
+        label, 
+        input, 
+        textarea {
+            width: 100%;
+            font-family: 'Montserrat';
+            font-size: 1.4rem;
+        }
+
+        label {
+            margin: 1.5rem 0;
+        }
+
+        textarea, input {
+            padding: 1rem;
+        }
+
+        textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
+
+        @media (min-width: breakpoints.$large_tablet) {
+            .name-input__wrapper {
+                justify-content: space-between;
+            }
+
+            .name-input {
+                width: 48%;
+            }
+        }
+
+        .contact-form-btn__wrapper {
+            padding: 1rem;
+        }
+
+        @include mixins.border-button-effect();
+        .contact-submit-btn {
+            padding: 1.5rem 2rem;
+            font-family: 'Russo One';
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            background-color: transparent;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+
+
+    }
+
+    .more-details-msg {
+        font-family: 'Russo One';
+        text-transform: uppercase;
+        text-align: center;
+        padding: 3rem;
+        color: #fff;
+        font-size: 1.8rem;
+    }
+    
+    .more-details__content {
+        max-width: 700px;
+        font-size: 1.8rem;
+        text-align: center;
+        color: #fff;
+
+        .fa-solid {
+            font-size: 3rem;
+        }
+
+        .bold {
+            letter-spacing: .2rem;
+            font-weight: 700;
+            padding: 1rem 0;
+            font-family: 'Russo One';
+            text-transform: uppercase;
+            
+        }
+    }
+
+
+    .email-details__wrapper,
+    .phone-details__wrapper {
+        margin: 1rem 0;
+    }
+
+}
