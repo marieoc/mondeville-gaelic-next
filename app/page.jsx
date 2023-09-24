@@ -2,13 +2,37 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect } from 'react';
 // import simpleParallax from 'simple-parallax-js';
 
 
-const Home = () => {
-  const imageRef = useRef(null);
-  // const image = imageRef.current;
+const Home = () => {  
+
+  const scrollEffect = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    for (let i=0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let revealTop = reveals[i].getBoundingClientRect().top;
+        
+        const revealPoint = 150;
+        
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('active');
+        } 
+    }
+  }
+    
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollEffect)
+
+    return () => {
+      window.removeEventListener('scroll', scrollEffect);
+    }
+
+  }, [])
+
 
 
   return (
@@ -20,9 +44,9 @@ const Home = () => {
 
       {/* NEWS */}
       <section className="news_section__wrapper flex flex-col align-items">
-        <h2 className="double-border">Actualités</h2>
+        <h2 className="double-border reveal">Actualités</h2>
 
-        <div className="news_card__wrapper flex flex-wrap flex-center">
+        <div className="news_card__wrapper flex flex-wrap flex-center reveal">
           <div className="news_card double-border-card-effect">
             <Image 
               src="/img/affiche_entrainement.jpeg"
@@ -68,12 +92,13 @@ const Home = () => {
         <div className="linear-gradient-black-bottom"></div>
         <div className="sponsor-bg"></div>
 
-        <h2 className="double-border">Nos sponsors</h2>
-        <p>Merci à eux d'avoir placé leur confiance en nous.</p>
+        <h2 className="double-border reveal">Nos sponsors</h2>
+        <p className="reveal">Merci à eux d'avoir placé leur confiance en nous.</p>
 
-        <div className="sponsor_card__wrapper w-full flex flex-wrap space-around">
+        <div className="sponsor_card__wrapper w-full flex flex-wrap space-around reveal">
           <div className="sponsor_card">
             <Image
+              alt=""
               src="/img/sponsors/FFG_logo.png"
               width={150}
               height={150}
@@ -82,6 +107,7 @@ const Home = () => {
 
           <div className="sponsor_card">
             <Image
+              alt=""
               src="/img/sponsors/odonnels.png"
               width={150}
               height={150}
@@ -90,6 +116,7 @@ const Home = () => {
 
           <div className="sponsor_card">
             <Image
+              alt=""
               src="/img/sponsors/mondeville.png"
               width={150}
               height={150}
@@ -98,6 +125,7 @@ const Home = () => {
 
           <div className="sponsor_card">
             <Image
+              alt=""
               src="/img/sponsors/societe-generale-logo.png"
               width={150}
               height={150}

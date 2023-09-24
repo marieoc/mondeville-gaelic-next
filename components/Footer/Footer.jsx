@@ -65,7 +65,7 @@ const Footer = () => {
             <p>Stade Louis Varin<br/> 
               Rue émile Zola<br/>
               14120 Mondeville</p>
-            <p>Les mardis et jeudis<br />
+            <p className="bold">Les mardis et jeudis<br />
               de 19h à 21h</p>
           </div>
         </div>

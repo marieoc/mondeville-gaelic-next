@@ -46,6 +46,7 @@
 /* FOR CONTACT BUTTON */
 @mixin border-button-effect {
     .border-button-effect {
+        letter-spacing: .1rem;
         padding: 1rem 2rem;
         position: relative;
         border: 2px solid transparent;

@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Contact = () => {
+
   return (
     <main className="contact-page__wrapper flex flex-col align-items">
       <div className="bg-image w-full"></div>
