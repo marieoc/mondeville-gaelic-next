@@ -115,6 +115,10 @@ header {
 
 .logo_wrapper {
     margin-left: 1rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 /* MOBILE NAVBAR */
@@ -137,7 +141,7 @@ header {
 .mobile_navbar {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
@@ -442,6 +446,7 @@ footer {
 .homepage_bg {
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
     background: url('/img/bg1.jpeg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -849,12 +854,20 @@ h2 {
     .more-details__content {
         max-width: 700px;
         line-height: 1.6;
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         text-align: center;
         color: #fff;
 
         .fa-solid {
-            font-size: 3rem;
+            font-size: 2.5rem;
+        }
+
+        @media (min-widt: breakpoints.$tablet) {
+            font-size: 1.8rem;
+
+            .fa-solid {
+                font-size: 3rem;
+            }
         }
 
         .bold {

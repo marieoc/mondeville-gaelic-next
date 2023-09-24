@@ -149,6 +149,10 @@ header {
 
 .logo_wrapper {
   margin-left: 1rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* MOBILE NAVBAR */
@@ -172,7 +176,7 @@ header {
 .mobile_navbar {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -503,6 +507,7 @@ footer .social_media_icons_wrapper .insta-link:hover .fa-square-instagram {
 .homepage_bg {
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
   background: url("/img/bg1.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -1083,12 +1088,20 @@ h2 {
 .contact-page__wrapper .more-details__content {
   max-width: 700px;
   line-height: 1.6;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   text-align: center;
   color: #fff;
 }
 .contact-page__wrapper .more-details__content .fa-solid {
-  font-size: 3rem;
+  font-size: 2.5rem;
+}
+@media (min-widt: 590px) {
+  .contact-page__wrapper .more-details__content {
+    font-size: 1.8rem;
+  }
+  .contact-page__wrapper .more-details__content .fa-solid {
+    font-size: 3rem;
+  }
 }
 .contact-page__wrapper .more-details__content .bold {
   letter-spacing: 0.2rem;
