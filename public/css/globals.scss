@@ -431,6 +431,12 @@ footer {
 /* MAIN */
 .home_page__wrapper {
     width: 100%;
+    position: relative;
+
+    h1 {
+        position: absolute;
+        opacity: 0;
+    }
 }
 
 .homepage_bg {
@@ -444,6 +450,7 @@ footer {
     position: relative;
 
     @include mixins.linear-gradient-black();
+    @include mixins.border-button-effect();
 }
 
 .homepage_bg::after {
@@ -455,6 +462,93 @@ footer {
     right: 0;
     background-color: rgba(0,0,0,.7);
 }
+
+.homepage_bg .slider_msg,
+.homepage_bg .slider_btn {
+    position: absolute;
+    color: colors.$gold;
+    font-family: 'Russo One';
+    opacity: 0;
+    transition: all 2s ease;
+    z-index: 2;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+}
+
+.homepage_bg .slider_btn {
+    padding: 1.5rem;
+    transform: translateX(100px);
+    top: 60%;
+    right: 10%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+
+    @media (min-width: breakpoints.$tablet) {
+        font-size: 1.4rem;
+    }
+}
+
+.slider_btn.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.homepage_bg .slider_msg {
+    transform: translateY(100px);
+    font-size: 2rem;
+    top: 40%;
+    right: 10%;
+    text-align: right;
+    
+    @media (min-width: breakpoints.$tablet) {
+        font-size: 3.4rem;
+    }
+
+}
+
+.slider_msg.active {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.slider_msg::before,
+.slider_msg::after {
+    content: "";
+    position: absolute;
+    background-color: colors.$gold;
+    transition: 1s all;
+}
+
+.slider_msg::before {
+    top: -15px;
+    right: -20px;
+    width: 0;
+    height: 5px;
+}
+
+.slider_msg::after {
+    top: -15px;
+    right: -20px;
+    width: 5px;
+    height: 0;
+}
+
+.slider_msg.active::before {
+    width: 110%;
+
+    @media (min-width: breakpoints.$tablet) {
+        width: 105%;
+    }
+}
+
+.slider_msg.active::after {
+    height: 130%;
+
+    @media (min-width: breakpoints.$tablet) {
+        height: 105%;
+    }
+}
+
 
 
 
@@ -653,6 +747,7 @@ h2 {
         max-width: 700px;
         font-family: 'Montserrat';
         font-size: 1.2rem;
+        line-height: 1.6;
         margin: 1rem;
         padding: 1rem;
         text-align: center;
@@ -731,6 +826,7 @@ h2 {
     
     .more-details__content {
         max-width: 700px;
+        line-height: 1.6;
         font-size: 1.8rem;
         text-align: center;
         color: #fff;
