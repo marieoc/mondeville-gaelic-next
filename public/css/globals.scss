@@ -392,7 +392,7 @@ footer {
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
+            /* text-fill-color: transparent; */
         }
     }
 }
@@ -775,15 +775,29 @@ h2 {
 
         label {
             margin: 1.5rem 0;
+            position: relative;
         }
 
         textarea, input {
             padding: 1rem;
+            border: 2px solid transparent;
         }
 
         textarea {
             min-height: 300px;
             resize: vertical;
+        }
+
+        .input-error-border {
+            border: 2px solid red;
+        }
+
+        .input-error-msg {
+            position: absolute;
+            left : 0;
+            bottom: -16px;
+            font-size: 1.2rem;
+            color: red;
         }
 
         @media (min-width: breakpoints.$tablet) {
@@ -801,6 +815,12 @@ h2 {
         }
 
         @include mixins.border-button-effect();
+
+        .button--loading.border-button-effect:hover::before,
+        .button--loading.border-button-effect:hover::after {
+            transform: translate(0px, 0px);
+        }
+        @include mixins.loadingButton();
         .contact-submit-btn {
             padding: 1.5rem 2rem;
             font-family: 'Russo One';
@@ -810,6 +830,8 @@ h2 {
             border: 2px solid transparent;
             cursor: pointer;
         }
+
+        
 
 
 

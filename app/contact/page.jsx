@@ -1,43 +1,84 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { validateEmail } from '@/utils/validateEmail';
 import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
 
 const Contact = () => {
   const [formattedNumber, setFormattedNumber] = useState('');
+  const [errors, setErrors] = useState({});
+  const fields = ["fname", "lname", "email", "msg"];
+  const btnRef = useRef(null);
+  const submitBtn = btnRef.current;
 
   // const regex = /^(0[1-9]\d{4})$/; final check when submitting ?
-
   /* const regex = /^\d+$/; */
 
-  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const trimmedValue = value.trim();
 
-  const handleEmailInputChange = (e) => {
-    const value = e.target.value;
+    // Remove "invalid" class and error messages
+    e.target.classList.add('input-error-border');
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: null // Set to null to remove the error message
+    }))
+
+    if (trimmedValue === "") {
+        setErrors(prevErrors => ({
+        ...prevErrors,
+        [name]: "Champs requis" // Set the error message for the empty field
+        }));
+    }
+
   }
 
   const handlePhoneInputChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     const formattedValue = formatPhoneNumber(value);
 
     setFormattedNumber(formattedValue);
-
-    console.log(formattedNumber.length);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newErrors = {};
 
+    // Field validation
+    for (let field of fields) {
+      e.target[field].classList.remove('input-error-border');
 
-    if (e.target.email.value && !validateEmail(e.target.email.value)) {
-      console.log('email is invalid')
-    } else if (e.target.email.value === "") {
-      console.log('email is missing')
+      const value = e.target[field].value.trim();
+
+      if (!value || value === "") {
+        newErrors[field] = "Champs requis";
+        e.target[field].classList.add('input-error-border');
+      }
     }
 
-    console.log('form ready to be send')
+    // Email validation
+    if (e.target.email.value && !validateEmail(e.target.email.value)) {
+      return newErrors.email = "L'email est invalide";
+    }
+
+    if (Object.keys(newErrors).length !== 0) {
+      console.log(newErrors);
+      setErrors(newErrors);
+      return;
+    }
+
+    // if no error, delete all remaining msg and dispstick 
+    setErrors({});
+
+    // when submitting form, display loading spinner
+    submitBtn.classList.add("button--loading");
+    console.log('no errors, form ready to be send')
     
+    // send form
+
+    // remove loading spinner
+    submitBtn.classList.remove("button--loading");
   }
 
   return (
@@ -62,19 +103,25 @@ const Contact = () => {
           >
             <div className="w-full flex flex-wrap name-input__wrapper">
               <label className="name-input" htmlFor="fname">
-                <input 
+                <input
+                  name="fname" 
                   id="fname"
                   type="text" 
                   placeholder="Prénom *" 
+                  onChange={handleChange}
                 />
+                {errors.fname && <span className="input-error-msg">{errors.fname}</span>}
               </label>
 
               <label className="name-input" htmlFor="lname">
                 <input 
+                  name="lname"
                   id="lname"
                   type="text" 
                   placeholder="Nom *"
+                  onChange={handleChange}
                 />
+                {errors.lname && <span className="input-error-msg">{errors.lname}</span>}
               </label>
 
             </div>
@@ -85,11 +132,14 @@ const Contact = () => {
                 id="mail"
                 type="email" 
                 placeholder="Adresse mail *"
+                onChange={handleChange}
               />
+              {errors.email && <span className="input-error-msg">{errors.email}</span>}
             </label>
 
             <label htmlFor="phone">
               <input 
+                name="phone"
                 id="phone"
                 type="text"
                 placeholder="Numéro de téléphone"
@@ -100,20 +150,23 @@ const Contact = () => {
 
             <label htmlFor="msg">
               <textarea 
-                name="" 
+                name="msg" 
                 id="msg" 
                 cols="30" 
                 rows="10"
                 placeholder="Votre message *"
+                onChange={handleChange}
               >
               </textarea>
+              {errors.msg && <span className="input-error-msg">{errors.msg}</span>}
             </label>
 
             <div className="contact-form-btn__wrapper w-full flex flex-center">
               <button
-                className="contact-submit-btn border-button-effect border-button-effect"
+                className="contact-submit-btn border-button-effect"
+                ref={btnRef}
               >
-                Valider
+                <span className='button__text'>Valider</span>
               </button>
             </div>
 

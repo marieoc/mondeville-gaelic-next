@@ -1,7 +1,7 @@
 @use 'colors';
 
 /* -------*/
-/* FOR SIMPLE BORDRED BUTTONS */
+/* FOR SIMPLE BORDERED BUTTONS */
 /* -------*/
 @mixin simple-border-button {
     .simple-border {
@@ -150,4 +150,49 @@
 @mixin linear-gradient-black {
     @include linear-gradient-black-top();
     @include linear-gradient-black-bottom();
+}
+
+
+@mixin loadingButton {
+    @keyframes button-loading-spinner {
+        from {
+            transform: rotate(0turn);
+        }
+    
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    button {
+        position: relative; /* important so we can center loading spinner */
+    }
+
+    /* when button is clicked, loading spinner class is activated */
+    .button--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: colors.$gold;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+    }
+
+    .button--loading .button__text {
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+
+    /* .button__text {
+        
+    } */
+
 }

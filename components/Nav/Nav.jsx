@@ -23,6 +23,7 @@ const Nav = () => {
       </Link>
 
       {/* MOBILE NAVBAR */}
+      {/* Fix nav on homepage -- extra width bcause of animation -- try with overflow-x: hidden */}
       <div className="mobile_navbar__wrapper">
         <button
           className={`burger ${isMobileMenuOpen ? "active" : ""}`} 
