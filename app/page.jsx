@@ -85,7 +85,7 @@ const Home = () => {
           Saison 2023-2024 : <br/>
           On recrute !
         </p>
-        <Link href="" className="slider_btn border-button-effect">
+        <Link href="/contact" className="slider_btn border-button-effect">
           Pour rejoindre,<br/>
          ça se passe ici !
          </Link>
@@ -96,8 +96,8 @@ const Home = () => {
       <section className="news_section__wrapper flex flex-col align-items">
         <h2 className="double-border reveal">Actualités</h2>
 
-        <div className="news_card__wrapper flex flex-wrap flex-center">
-          <div className="news_card double-border-card-effect reveal">
+        <div className="news_card__wrapper flex flex-wrap flex-center reveal">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/affiche_entrainement.jpeg"
               alt="News Article"
@@ -109,7 +109,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="news_card double-border-card-effect reveal">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/affiche_entrainement2.jpeg"
               alt="News Article"
@@ -121,7 +121,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="news_card double-border-card-effect reveal">
+          <div className="news_card double-border-card-effect">
             <Image 
               src="/img/bg2.jpeg"
               alt="News Article"
