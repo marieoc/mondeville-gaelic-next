@@ -9,7 +9,7 @@ const ValidationMessage = () => {
           <span>Merci !</span>
           <p>Nous avons bien reçu votre message, et nous nous efforçons de vous répondre dans les meilleurs délais.<br />
           &Agrave; très bientôt !</p>
-          <Link href="/">Retourner à la page d'accueil</Link>
+          <a href="/">Retourner à la page d'accueil</a>
         </div>
     </div>
   )
