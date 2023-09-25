@@ -412,6 +412,7 @@ footer::after {
 }
 
 footer h3 {
+  letter-spacing: 0.2rem;
   display: inline-block;
   margin: 2rem 0;
   font-family: "Russo One";
@@ -956,6 +957,67 @@ h2 {
     font-size: 1.4rem;
   }
 }
+.contact-page__wrapper .validation-page__wrapper {
+  width: 100%;
+  max-width: 450px;
+  min-height: 700px;
+  padding: 2rem;
+}
+.contact-page__wrapper .validation-page__wrapper .double-border {
+  text-transform: uppercase;
+  font-family: "Russo One";
+  letter-spacing: 0.3rem;
+  position: relative;
+}
+.contact-page__wrapper .validation-page__wrapper .double-border::before, .contact-page__wrapper .validation-page__wrapper .double-border::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.contact-page__wrapper .validation-page__wrapper .double-border::before {
+  transform: translate(5px, 5px);
+}
+.contact-page__wrapper .validation-page__wrapper .double-border::after {
+  transform: translate(-5px, -5px);
+}
+.contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper {
+  color: #F2B235;
+  border-color: #F2B235;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 3rem 3rem 5rem 3rem;
+  position: relative;
+}
+.contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper p {
+  font-family: "Montserrat";
+  text-transform: none;
+  padding: 2rem 0;
+}
+.contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper a {
+  font-family: "Russo One";
+  text-transform: uppercase;
+  left: 0;
+  right: 0;
+  bottom: 25px;
+  position: absolute;
+  z-index: 5;
+  color: #F2B235;
+  font-size: 1.2rem;
+}
+@media (min-width: 590px) {
+  .contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper {
+    font-size: 1.5rem;
+  }
+}
+.contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper.double-border::after,
+.contact-page__wrapper .validation-page__wrapper .validation-msg__wrapper.double-border::before {
+  border: 2px solid #F2B235;
+}
 .contact-page__wrapper .contact-form {
   width: 100%;
   max-width: 700px;
@@ -1086,6 +1148,7 @@ h2 {
   font-size: 1.8rem;
 }
 .contact-page__wrapper .more-details__content {
+  margin: 1rem;
   max-width: 700px;
   line-height: 1.6;
   font-size: 1.4rem;
@@ -1112,7 +1175,7 @@ h2 {
 }
 .contact-page__wrapper .email-details__wrapper,
 .contact-page__wrapper .phone-details__wrapper {
-  margin: 1rem 0;
+  margin-bottom: 3rem;
 }
 
 /*# sourceMappingURL=globals.css.map */

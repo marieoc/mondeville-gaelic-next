@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { validateEmail } from '@/utils/validateEmail';
 import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
+import ValidationMessage from './ValidationMessage';
 
 const Contact = () => {
   const [formattedNumber, setFormattedNumber] = useState('');
@@ -9,6 +10,8 @@ const Contact = () => {
   const fields = ["fname", "lname", "email", "msg"];
   const btnRef = useRef(null);
   const submitBtn = btnRef.current;
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // const regex = /^(0[1-9]\d{4})$/; final check when submitting ?
   /* const regex = /^\d+$/; */
@@ -18,17 +21,18 @@ const Contact = () => {
     const trimmedValue = value.trim();
 
     // Remove "invalid" class and error messages
-    e.target.classList.add('input-error-border');
+    e.target.classList.remove('input-error-border');
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: null // Set to null to remove the error message
     }))
 
     if (trimmedValue === "") {
-        setErrors(prevErrors => ({
-        ...prevErrors,
-        [name]: "Champs requis" // Set the error message for the empty field
-        }));
+      e.target.classList.add('input-error-border');
+      setErrors(prevErrors => ({
+      ...prevErrors,
+      [name]: "Champs requis" // Set the error message for the empty field
+      }));
     }
 
   }
@@ -75,10 +79,11 @@ const Contact = () => {
     submitBtn.classList.add("button--loading");
     console.log('no errors, form ready to be send')
     
-    // send form
+    // send form via fetch
 
     // remove loading spinner
     submitBtn.classList.remove("button--loading");
+    setIsSubmitted(true);
   }
 
   return (
@@ -88,90 +93,101 @@ const Contact = () => {
       <div className="linear-gradient-black-bottom"></div>
 
       <div className="w-full flex flex-col align-items position-relative">
+        {
+          isSubmitted === false 
+        ? (
+        <>
+          <h1>Contactez-nous</h1>
+          <p className="contact-msg">Vous avez une question au sujet du club ou des entraînements, vous souhaitez vous associer ou sponsoriser une équipe, ou vous voulez tout simplement <span className="">nous rejoindre</span> ?<br/>
+          Contactez-nous sans plus attendre ! Nous vous répondrons dans les meilleurs délais.</p>
+          
+          {/* CONTACT FORM */}
+          <div className="contact-form__wrapper w-full flex flex-col space-around">
+            <form 
+              className="flex flex-col flex-center contact-form" 
+              action="" 
+              method=""
+              onSubmit={handleSubmit}
+            >
+              <div className="w-full flex flex-wrap name-input__wrapper">
+                <label className="name-input" htmlFor="fname">
+                  <input
+                    name="fname" 
+                    id="fname"
+                    type="text" 
+                    placeholder="Prénom *" 
+                    onChange={handleChange}
+                  />
+                  {errors.fname && <span className="input-error-msg">{errors.fname}</span>}
+                </label>
 
-        <h1>Contactez-nous</h1>
-        <p className="contact-msg">Vous avez une question au sujet du club ou des entraînements, vous souhaitez vous associer ou sponsoriser une équipe, ou vous voulez tout simplement <span className="">nous rejoindre</span> ?<br/>
-        Contactez-nous sans plus attendre ! Nous vous répondrons dans les meilleurs délais.</p>
-        
-        {/* CONTACT FORM */}
-        <div className="contact-form__wrapper w-full flex flex-col space-around">
-          <form 
-            className="flex flex-col flex-center contact-form" 
-            action="" 
-            method=""
-            onSubmit={handleSubmit}
-          >
-            <div className="w-full flex flex-wrap name-input__wrapper">
-              <label className="name-input" htmlFor="fname">
-                <input
-                  name="fname" 
-                  id="fname"
-                  type="text" 
-                  placeholder="Prénom *" 
-                  onChange={handleChange}
-                />
-                {errors.fname && <span className="input-error-msg">{errors.fname}</span>}
-              </label>
+                <label className="name-input" htmlFor="lname">
+                  <input 
+                    name="lname"
+                    id="lname"
+                    type="text" 
+                    placeholder="Nom *"
+                    onChange={handleChange}
+                  />
+                  {errors.lname && <span className="input-error-msg">{errors.lname}</span>}
+                </label>
 
-              <label className="name-input" htmlFor="lname">
+              </div>
+
+              <label htmlFor="mail">
                 <input 
-                  name="lname"
-                  id="lname"
-                  type="text" 
-                  placeholder="Nom *"
+                  name="email"
+                  id="mail"
+                  type="email" 
+                  placeholder="Adresse mail *"
                   onChange={handleChange}
                 />
-                {errors.lname && <span className="input-error-msg">{errors.lname}</span>}
+                {errors.email && <span className="input-error-msg">{errors.email}</span>}
               </label>
 
-            </div>
+              <label htmlFor="phone">
+                <input 
+                  name="phone"
+                  id="phone"
+                  type="text"
+                  placeholder="Numéro de téléphone"
+                  onChange={handlePhoneInputChange}
+                  value={formattedNumber}
+                />
+              </label>
 
-            <label htmlFor="mail">
-              <input 
-                name="email"
-                id="mail"
-                type="email" 
-                placeholder="Adresse mail *"
-                onChange={handleChange}
-              />
-              {errors.email && <span className="input-error-msg">{errors.email}</span>}
-            </label>
+              <label htmlFor="msg">
+                <textarea 
+                  name="msg" 
+                  id="msg" 
+                  cols="30" 
+                  rows="10"
+                  placeholder="Votre message *"
+                  onChange={handleChange}
+                >
+                </textarea>
+                {errors.msg && <span className="input-error-msg">{errors.msg}</span>}
+              </label>
 
-            <label htmlFor="phone">
-              <input 
-                name="phone"
-                id="phone"
-                type="text"
-                placeholder="Numéro de téléphone"
-                onChange={handlePhoneInputChange}
-                value={formattedNumber}
-              />
-            </label>
+              <div className="contact-form-btn__wrapper w-full flex flex-center">
+                <button
+                  className="contact-submit-btn border-button-effect"
+                  ref={btnRef}
+                >
+                  <span className='button__text'>Valider</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </>   
+        ) : ( 
+          <ValidationMessage /> 
+        )}
 
-            <label htmlFor="msg">
-              <textarea 
-                name="msg" 
-                id="msg" 
-                cols="30" 
-                rows="10"
-                placeholder="Votre message *"
-                onChange={handleChange}
-              >
-              </textarea>
-              {errors.msg && <span className="input-error-msg">{errors.msg}</span>}
-            </label>
 
-            <div className="contact-form-btn__wrapper w-full flex flex-center">
-              <button
-                className="contact-submit-btn border-button-effect"
-                ref={btnRef}
-              >
-                <span className='button__text'>Valider</span>
-              </button>
-            </div>
-
-          </form>
-        </div>
+      
+        
+          
 
         {/* MORE CONTACT DETAILS */}
           <p className="more-details-msg">Vous pouvez également nous joindre via....</p>
